@@ -66,8 +66,7 @@
     return (
       '<footer class="footer"><div class="container footer__inner">' +
       '<div class="footer__brand"><span class="logo logo--footer">' +
-      '<span class="logo__mark">' + LOGO_SVG + "</span>" +
-      '<span class="logo__text">キープオン<small>HP制作</small></span></span>' +
+      '<img src="assets/images/common/logo.png" alt="キープオン" class="logo__image logo__image--footer"></span>' +
       '<p class="footer__tagline">子どもに関わるすべての場所に、ちゃんとした"顔"を。</p></div>' +
       '<nav class="footer__nav" aria-label="フッターナビゲーション">' +
       '<div><h4>メニュー</h4><a href="service.html">サービス・料金</a><a href="flow.html">制作の流れ</a><a href="template.html">テンプレート</a><a href="works.html">制作事例</a></div>' +
