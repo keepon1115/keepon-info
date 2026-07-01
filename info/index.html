@@ -66,6 +66,11 @@
   margin: 4px auto 28px;
   box-shadow: 0 6px 20px rgba(180, 130, 60, 0.10);
 }
+.kh-section-img-natural {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
 
 /* ============================================================
    ANIMATIONS
@@ -104,8 +109,8 @@
 .kh-hero-illustration {
   max-width: 340px;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 14px;
   margin: 0 auto 20px;
   animation: kh-float 4s ease-in-out infinite;
@@ -743,7 +748,7 @@
     <div class="kh-section-label">SHOP</div>
     <h2 class="kh-heading-lg">よく使われる商品カテゴリ</h2>
     <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
-    <img src="images/category.png" alt="" class="kh-section-img">
+    <img src="images/category.png" alt="" class="kh-section-img kh-section-img-natural">
 
     <div class="kh-categories">
 
