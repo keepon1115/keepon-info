@@ -96,6 +96,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .header.is-scrolled { background: rgba(255,255,255,.88); backdrop-filter: blur(10px); box-shadow: 0 2px 14px rgba(60,40,20,.07); }
 .header__inner { display: flex; align-items: center; gap: 20px; width: min(100% - 40px, 1240px); margin-inline: auto; height: 72px; }
 .logo { display: inline-flex; align-items: center; gap: 9px; font-weight: 900; }
+.logo__image { display: block; width: 150px; max-width: 100%; height: auto; object-fit: contain; }
 .logo__mark { display: grid; place-items: center; filter: drop-shadow(0 3px 6px rgba(242,104,63,.3)); }
 .logo__text { font-size: 19px; color: var(--t-head); line-height: 1.1; display: flex; flex-direction: column; }
 .logo__text small { font-size: 10px; color: var(--c-primary); font-weight: 700; letter-spacing: .15em; }
@@ -118,12 +119,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .blob--1 { width: 340px; height: 340px; background: #FFD9C7; top: -80px; right: -60px; }
 .blob--2 { width: 260px; height: 260px; background: #CDEBF5; bottom: -60px; left: -40px; }
 .blob--3 { width: 180px; height: 180px; background: #FFE9B0; top: 40%; left: 46%; opacity: .4; }
-.hero__inner { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.hero__inner { position: relative; }
+.hero__copy { max-width: 1100px; margin-inline: auto; text-align: center; }
+.hero__image-wrap { margin: 0; }
+.hero__image { display: block; width: 100%; height: auto; object-fit: contain; }
 .hero__eyebrow { color: var(--c-primary); font-weight: 700; font-size: 15px; letter-spacing: .08em; margin-bottom: 12px; }
 .hero__title { font-size: clamp(28px, 4.4vw, 46px); font-weight: 900; letter-spacing: .01em; }
 .hero__title .hl { background: linear-gradient(transparent 62%, #FFD79E 62%); }
 .hero__lead { margin: 22px 0 30px; font-size: 16px; color: var(--t-body); }
-.hero__cta { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero__cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .hero__note { margin-top: 18px; font-size: 13px; color: var(--t-mute); }
 
 /* Hero visual / mockups */
@@ -189,6 +193,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hi); }
 .course-card--accent { border-color: var(--c-primary); }
 .course-card__tag { position: absolute; top: -14px; left: 30px; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 999px; }
+.course-card__image { display: block; width: 100%; height: auto; object-fit: contain; border-radius: var(--radius); margin-bottom: 18px; }
 .tag--soft { background: var(--c-accent); color: #fff; }
 .tag--accent { background: var(--c-primary); color: #fff; }
 .course-card__name { font-size: 22px; margin: 8px 0 18px; }
@@ -218,7 +223,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .works__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
 .work-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
 .work-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hi); }
-.work-card__thumb { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; }
+.work-card__thumb { position: relative; display: grid; place-items: center; }
+.work-card__image { display: block; width: 100%; height: auto; object-fit: contain; }
 .thumb--natural { background: linear-gradient(135deg, #FFE3D0, #FCEFD9); }
 .thumb--pop { background: linear-gradient(135deg, #FFD7E2, #D7ECFF); }
 .thumb--trust { background: linear-gradient(135deg, #D9EEF5, #E3E9F7); }
@@ -506,6 +512,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hamburger { display: flex; order: 3; }
   .header__cta { margin-left: auto; }
   .header__inner { gap: 10px; }
+  .logo__image { width: 120px; }
   .logo__text { font-size: 17px; }
 
   /* hero */

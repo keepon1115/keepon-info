@@ -39,8 +39,7 @@
     return (
       '<header class="header" id="header"><div class="header__inner">' +
       '<a href="index.html" class="logo" aria-label="キープオン ホームへ">' +
-      '<span class="logo__mark" aria-hidden="true">' + LOGO_SVG + "</span>" +
-      '<span class="logo__text">キープオン<small>HP制作</small></span></a>' +
+      '<img src="assets/images/common/logo.png" alt="キープオン" class="logo__image"></a>' +
       '<nav class="nav" id="nav" aria-label="メインナビゲーション">' + navItems + "</nav>" +
       '<a href="' + lineHref + '"' + lineAttr + ' class="btn btn--line header__cta">' +
       '<span class="ico-line" aria-hidden="true"></span>LINEで相談する</a>' +
