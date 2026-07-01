@@ -1,0 +1,1293 @@
+<!-- ============================================================
+     キープオン 園向けハブページ v2
+     「園を、まるごとサポート。」
+     
+     【使い方】
+     このファイルの <style>...</style> と <div class="kh">...</div> を
+     カラーミーのフリーページのHTML編集画面に貼り付けてください。
+     
+     【画像について】
+     images/ フォルダの画像をカラーミーにアップロードし、
+     ★IMG★ マーク付きのsrc属性を差し替えてください。
+     
+     【カテゴリリンクについて】
+     ★LINK★ マーク付きのhrefを実際のカラーミーカテゴリURLに差し替えてください。
+     ============================================================ -->
+
+<style>
+/* ── Google Fonts ──────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap');
+
+/* ── Reset & Base ─────────────────────── */
+.kh *, .kh *::before, .kh *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.kh {
+  max-width: 100%;
+  font-family: 'Zen Maru Gothic', 'Hiragino Sans', 'Noto Sans JP', Meiryo, sans-serif;
+  color: #3A3A3A;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.kh a { color: inherit; text-decoration: none; }
+.kh img { max-width: 100%; height: auto; display: block; }
+
+/* ── Section ──────────────────────────── */
+.kh-section { padding: 48px 20px; }
+.kh-inner { max-width: 800px; margin: 0 auto; }
+
+/* ── Colors ───────────────────────────── */
+.kh-bg-cream { background-color: #FFF8F0; }
+.kh-bg-warm  { background-color: #F5F0E8; }
+.kh-bg-white { background-color: #FFFFFF; }
+
+/* ── Typography ───────────────────────── */
+.kh-heading-lg {
+  font-size: 22px; font-weight: 700; line-height: 1.5;
+  color: #3A3A3A; margin-bottom: 16px;
+}
+.kh-heading-md {
+  font-size: 18px; font-weight: 700; line-height: 1.5; color: #3A3A3A;
+}
+.kh-text { font-size: 15px; line-height: 1.9; color: #555; }
+.kh-text-sm { font-size: 13px; line-height: 1.7; color: #888; }
+.kh-section-label {
+  display: inline-block; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; color: #F7941D;
+  border: 1.5px solid #F7941D; border-radius: 3px;
+  padding: 3px 12px; margin-bottom: 16px;
+}
+.kh-section-img {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 4px auto 28px;
+  box-shadow: 0 6px 20px rgba(180, 130, 60, 0.10);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes kh-fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes kh-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes kh-scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes kh-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes kh-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ============================================================
+   ① HERO
+   ============================================================ */
+.kh-hero {
+  padding: 56px 20px 48px;
+  text-align: center;
+  background: linear-gradient(180deg, #FFF8F0 0%, #FFF2E0 100%);
+  position: relative;
+  overflow: hidden;
+}
+.kh-hero-illustration {
+  max-width: 340px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 0 auto 20px;
+  animation: kh-float 4s ease-in-out infinite;
+}
+.kh-hero-sub {
+  font-size: 14px; color: #B5956A; font-weight: 500;
+  letter-spacing: 0.1em; margin-bottom: 8px;
+  opacity: 0; animation: kh-fadeUp 0.7s ease forwards 0.2s;
+}
+.kh-hero-catch {
+  font-size: 38px; font-weight: 900; color: #F7941D;
+  line-height: 1.35; margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  opacity: 0; animation: kh-fadeUp 0.8s ease forwards 0.5s;
+}
+.kh-hero-catch-shimmer {
+  background: linear-gradient(90deg, #F7941D 0%, #FFB84D 40%, #F7941D 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: kh-fadeUp 0.8s ease forwards 0.5s, kh-shimmer 3s ease-in-out 1.5s infinite;
+  opacity: 0;
+}
+.kh-hero-desc {
+  font-size: 16px; line-height: 2; color: #666;
+  max-width: 540px; margin: 0 auto;
+  opacity: 0; animation: kh-fadeUp 0.7s ease forwards 0.9s;
+}
+.kh-hero-desc em {
+  font-style: normal; color: #D4790E; font-weight: 700;
+  background: linear-gradient(transparent 60%, #FFE8C0 60%);
+  padding: 0 2px;
+}
+
+/* ============================================================
+   ② SERVICE CARDS
+   ============================================================ */
+.kh-services {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-top: 8px;
+}
+.kh-service-card {
+  background: #FFFFFF; border-radius: 14px;
+  padding: 28px 20px 24px; text-align: center;
+  border-top: 4px solid #F7941D;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: box-shadow 0.25s, transform 0.25s;
+  opacity: 0; animation: kh-scaleIn 0.6s ease forwards;
+}
+.kh-service-card:nth-child(1) { animation-delay: 0.3s; }
+.kh-service-card:nth-child(2) { animation-delay: 0.5s; border-top-color: #5DAE5F; }
+.kh-service-card:nth-child(3) { animation-delay: 0.7s; border-top-color: #3C7FBF; }
+.kh-service-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+.kh-service-icon { font-size: 36px; margin-bottom: 12px; }
+.kh-service-title {
+  font-size: 16px; font-weight: 700; color: #3A3A3A; margin-bottom: 8px;
+}
+.kh-service-desc {
+  font-size: 13px; color: #777; line-height: 1.7; margin-bottom: 16px;
+}
+.kh-service-cta {
+  display: inline-block; font-size: 13px; font-weight: 600;
+  padding: 8px 20px; border-radius: 6px; transition: opacity 0.2s;
+}
+.kh-service-cta:hover { opacity: 0.85; }
+.kh-cta-orange { background: #FFF2E0; color: #D4790E; }
+.kh-cta-green  { background: #E8F5E8; color: #3D8B3D; }
+.kh-cta-blue   { background: #E3F0FA; color: #2A6A9E; }
+
+/* ============================================================
+   ③ PRODUCT CATEGORIES
+   ============================================================ */
+.kh-categories {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 12px; margin-bottom: 20px;
+}
+.kh-cat-card {
+  display: flex; align-items: center; gap: 14px;
+  background: #FFFFFF; border-radius: 10px; padding: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.25s, transform 0.25s;
+  cursor: pointer;
+}
+.kh-cat-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+.kh-cat-icon {
+  width: 52px; height: 52px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.kh-cat-icon-1 { background: #FFF0E0; }
+.kh-cat-icon-2 { background: #E3F0FA; }
+.kh-cat-icon-3 { background: #FFF5CC; }
+.kh-cat-icon-4 { background: #E8F5E8; }
+.kh-cat-icon-5 { background: #F5E8F5; }
+.kh-cat-icon-6 { background: #FFE8E8; }
+.kh-cat-info { flex: 1; min-width: 0; }
+.kh-cat-name { font-size: 15px; font-weight: 700; color: #3A3A3A; margin-bottom: 2px; }
+.kh-cat-sub  { font-size: 12px; color: #999; line-height: 1.5; }
+.kh-cat-arrow { color: #CCC; font-size: 14px; flex-shrink: 0; }
+.kh-catalog-link {
+  display: block; text-align: center; padding: 14px;
+  background: #FFF; border: 2px dashed #E0D5C5; border-radius: 10px;
+  font-size: 14px; font-weight: 600; color: #D4790E;
+  transition: background 0.2s;
+}
+.kh-catalog-link:hover { background: #FFF8F0; }
+
+/* ============================================================
+   ④ STEAM FULL SECTION
+   ============================================================ */
+.kh-steam-badge {
+  display: inline-block; background: #F7941D; color: #FFF;
+  font-size: 12px; font-weight: 700; padding: 4px 14px;
+  border-radius: 20px; margin-bottom: 16px;
+}
+.kh-steam-heading {
+  font-size: 28px; font-weight: 900; color: #F7941D;
+  margin-bottom: 6px; line-height: 1.4;
+}
+.kh-steam-points { margin: 24px 0; }
+.kh-steam-point {
+  display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px;
+}
+.kh-steam-check {
+  width: 24px; height: 24px; background: #5DAE5F; color: #FFF;
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 13px; font-weight: 700;
+  flex-shrink: 0; margin-top: 3px;
+}
+.kh-steam-point-text { font-size: 15px; line-height: 1.7; color: #555; }
+
+/* Video Button */
+.kh-video-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #D4790E; color: #FFF;
+  font-size: 15px; font-weight: 700; padding: 13px 32px;
+  border-radius: 10px; margin-top: 16px;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 3px 12px rgba(212,121,14,0.3);
+}
+.kh-video-btn:hover { opacity: 0.9; color: #FFF; transform: translateY(-1px); }
+.kh-video-play {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+}
+
+/* Sub-section divider */
+.kh-sub-divider {
+  width: 40px; height: 3px; background: #F7941D;
+  border-radius: 2px; margin: 36px 0 20px;
+}
+
+/* Benefit cards */
+.kh-benefit-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin: 20px 0;
+}
+.kh-benefit-card {
+  background: #FFF; border-radius: 12px; padding: 22px 16px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06); text-align: center;
+}
+.kh-benefit-icon { font-size: 32px; margin-bottom: 8px; }
+.kh-benefit-title {
+  font-size: 15px; font-weight: 700; color: #3A3A3A;
+  margin-bottom: 6px; line-height: 1.4;
+}
+.kh-benefit-desc { font-size: 13px; color: #777; line-height: 1.6; }
+
+/* Stat highlight */
+.kh-stat-box {
+  background: #FFF; border-radius: 12px; padding: 24px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  text-align: center; margin: 24px 0;
+}
+.kh-stat-num {
+  font-size: 48px; font-weight: 900; color: #F7941D; line-height: 1.1;
+}
+.kh-stat-unit { font-size: 18px; font-weight: 700; color: #F7941D; }
+.kh-stat-label { font-size: 14px; color: #777; margin-top: 4px; }
+.kh-stat-note { font-size: 11px; color: #BBB; margin-top: 8px; }
+
+/* Workshop cards */
+.kh-work-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin: 20px 0;
+}
+.kh-work-card {
+  background: #FFF; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+.kh-work-header {
+  padding: 12px 16px; color: #FFF; font-size: 13px; font-weight: 700;
+  text-align: center;
+}
+.kh-work-h1 { background: #F7941D; }
+.kh-work-h2 { background: #3C7FBF; }
+.kh-work-h3 { background: #5DAE5F; }
+.kh-work-body { padding: 16px; }
+.kh-work-title {
+  font-size: 15px; font-weight: 700; color: #3A3A3A;
+  margin-bottom: 8px; line-height: 1.4;
+}
+.kh-work-desc { font-size: 13px; color: #777; line-height: 1.6; }
+.kh-work-meta {
+  font-size: 12px; color: #999; margin-top: 10px;
+  padding-top: 10px; border-top: 1px solid #F0ECE4;
+}
+
+/* Pricing section */
+.kh-price-card {
+  background: #FFF; border-radius: 14px; padding: 28px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07); margin: 20px 0;
+  position: relative; overflow: hidden;
+}
+.kh-price-campaign {
+  position: absolute; top: 16px; right: -32px;
+  background: #E53935; color: #FFF;
+  font-size: 12px; font-weight: 700; padding: 5px 40px;
+  transform: rotate(35deg);
+}
+.kh-price-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 16px 0;
+}
+.kh-price-item {
+  text-align: center; padding: 16px; background: #FFF8F0;
+  border-radius: 10px; border: 2px solid #FFE0B2;
+}
+.kh-price-label { font-size: 13px; color: #888; font-weight: 600; }
+.kh-price-amount {
+  font-size: 28px; font-weight: 900; color: #F7941D; line-height: 1.3;
+}
+.kh-price-tax { font-size: 12px; color: #999; font-weight: 500; }
+.kh-price-monitor {
+  text-align: center; margin-top: 12px;
+  padding: 10px; background: #E53935; border-radius: 8px;
+  color: #FFF; font-size: 14px; font-weight: 700;
+}
+.kh-price-details { margin-top: 16px; }
+.kh-price-detail {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 6px;
+}
+.kh-price-detail-check { color: #5DAE5F; font-weight: 700; flex-shrink: 0; }
+
+/* Cycle diagram */
+.kh-cycle {
+  display: flex; justify-content: center; align-items: center;
+  gap: 8px; margin: 20px 0; flex-wrap: wrap;
+}
+.kh-cycle-step {
+  text-align: center; padding: 16px 12px;
+  background: #FFF; border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  flex: 1; min-width: 100px; max-width: 180px;
+}
+.kh-cycle-icon { font-size: 28px; margin-bottom: 6px; }
+.kh-cycle-label { font-size: 16px; font-weight: 900; color: #3A3A3A; }
+.kh-cycle-desc { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+.kh-cycle-arrow { font-size: 20px; color: #F7941D; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .kh-benefit-cards { grid-template-columns: 1fr; }
+  .kh-work-cards { grid-template-columns: 1fr; }
+  .kh-price-grid { grid-template-columns: 1fr; }
+  .kh-steam-heading { font-size: 22px; }
+  .kh-stat-num { font-size: 38px; }
+  .kh-cycle { gap: 6px; }
+  .kh-cycle-arrow { transform: rotate(90deg); }
+}
+
+/* ── Download Block ──────────────────── */
+.kh-dl-block {
+  display: inline-flex; flex-direction: column; align-items: center;
+  text-decoration: none; cursor: pointer;
+  transition: transform 0.2s;
+}
+.kh-dl-block:hover { transform: translateY(-3px); }
+.kh-dl-thumb {
+  width: 100%; max-width: 340px; height: auto;
+  border-radius: 10px; display: block;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  margin-bottom: 12px;
+}
+.kh-dl-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #D4790E; color: #FFF;
+  font-size: 15px; font-weight: 700; padding: 13px 32px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(212,121,14,0.3);
+}
+.kh-dl-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; background: rgba(255,255,255,0.25);
+  border-radius: 50%; font-size: 14px;
+}
+
+/* ============================================================
+   ⑤ HP CREATION
+   ============================================================ */
+.kh-hp-card {
+  background: #FFFFFF; border-radius: 14px;
+  padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.kh-hp-features { display: flex; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+.kh-hp-feature {
+  flex: 1; min-width: 120px; text-align: center;
+  padding: 16px 8px; background: #F5F0E8; border-radius: 10px;
+}
+.kh-hp-feature-icon { font-size: 28px; margin-bottom: 6px; }
+.kh-hp-feature-text { font-size: 13px; font-weight: 600; color: #555; line-height: 1.5; }
+
+/* ── HP制作 料金プラン ─────────────── */
+.kh-plans {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin: 28px 0 8px; align-items: stretch;
+}
+.kh-plan {
+  background: #FFF; border: 1.5px solid #E8E2D6; border-radius: 14px;
+  overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+.kh-plan-pop {
+  border: 2px solid #3C7FBF;
+  box-shadow: 0 6px 22px rgba(60,127,191,0.15);
+}
+.kh-plan-ribbon {
+  background: #3C7FBF; color: #FFF; text-align: center;
+  padding: 6px 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+}
+.kh-plan-body { padding: 24px 18px; flex: 1; display: flex; flex-direction: column; }
+.kh-plan-name { font-size: 16px; font-weight: 700; color: #3A3A3A; margin-bottom: 4px; }
+.kh-plan-pop .kh-plan-name { color: #2A6A9E; }
+.kh-plan-tag { font-size: 12px; color: #999; line-height: 1.6; margin-bottom: 16px; }
+.kh-plan-market { font-size: 11px; color: #AAA; }
+.kh-plan-market s { color: #AAA; }
+.kh-plan-pricerow { display: flex; align-items: baseline; gap: 2px; margin: 2px 0 2px; }
+.kh-plan-price { font-size: 32px; font-weight: 900; color: #3C7FBF; line-height: 1.1; letter-spacing: -0.01em; }
+.kh-plan-pop .kh-plan-price { color: #2A6A9E; }
+.kh-plan-yen { font-size: 15px; font-weight: 700; color: #3C7FBF; }
+.kh-plan-pop .kh-plan-yen { color: #2A6A9E; }
+.kh-plan-pricelabel { font-size: 11px; color: #999; margin-bottom: 14px; }
+.kh-plan-divider { height: 1px; background: #F0ECE4; margin: 6px 0 14px; }
+.kh-plan-spec { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12px; color: #777; margin-bottom: 8px; }
+.kh-plan-spec b { font-size: 13px; font-weight: 700; color: #3A3A3A; }
+.kh-plan-spec small { font-size: 10px; color: #BBB; display: block; }
+
+/* ── 機能比較表 ────────────────────── */
+.kh-cmp {
+  background: #FFF; border: 1.5px solid #E8E2D6;
+  border-radius: 14px; overflow: hidden; margin: 24px 0;
+}
+.kh-cmp-row { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1fr; }
+.kh-cmp-row + .kh-cmp-row { border-top: 1px solid #F0ECE4; }
+.kh-cmp-head > div {
+  padding: 10px 4px; font-size: 11px; font-weight: 700;
+  text-align: center; color: #888; background: #F5F0E8;
+}
+.kh-cmp-head .kh-cmp-pop { color: #2A6A9E; }
+.kh-cmp-cell {
+  padding: 9px 4px; font-size: 11px; line-height: 1.4; color: #555;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.kh-cmp-label {
+  justify-content: flex-start; text-align: left;
+  font-size: 12px; font-weight: 700; color: #3A3A3A;
+  padding-left: 12px;
+}
+.kh-cmp-row:nth-child(even) .kh-cmp-cell { background: #FAF8F4; }
+.kh-cmp-yes { color: #5DAE5F; font-weight: 800; font-size: 14px; }
+.kh-cmp-no { color: #CCC; font-weight: 700; }
+
+/* ── 制作の流れ ────────────────────── */
+.kh-flow {
+  background: #FFF; border: 1.5px solid #E8E2D6;
+  border-radius: 14px; padding: 22px 20px; margin: 24px 0;
+}
+.kh-flow-title { font-size: 15px; font-weight: 800; color: #3A3A3A; margin-bottom: 2px; }
+.kh-flow-sub { font-size: 12px; color: #999; margin-bottom: 18px; }
+.kh-flow-step { display: flex; align-items: center; gap: 12px; }
+.kh-flow-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: #FFF; flex-shrink: 0;
+}
+.kh-flow-free .kh-flow-num { background: #5DAE5F; }
+.kh-flow-paid .kh-flow-num { background: #3C7FBF; }
+.kh-flow-label { font-size: 14px; font-weight: 600; color: #3A3A3A; }
+.kh-flow-badge {
+  font-size: 10px; font-weight: 700; color: #3D8B3D;
+  background: #F0FDF4; padding: 2px 9px; border-radius: 10px; margin-left: auto;
+}
+.kh-flow-line { width: 2px; height: 12px; background: #E8E2D6; margin-left: 13px; }
+.kh-flow-pay {
+  display: inline-block; margin: 6px 0 6px 0;
+  padding: 6px 14px; background: #EAF2FA; border: 1px dashed #3C7FBF;
+  border-radius: 8px; font-size: 12px; font-weight: 700; color: #2A6A9E;
+}
+.kh-plan-note { font-size: 12px; color: #999; line-height: 1.7; margin: 4px 0 8px; }
+
+/* ── 問い合わせ（LINE / フォーム 切替）── CSSのみで動作 ── */
+.kh-cc {
+  background: #FFF; border: 1.5px solid #E8E2D6; border-radius: 16px;
+  padding: 8px; margin: 24px 0; box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+}
+.kh-cc-radio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.kh-cc-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.kh-cc-tab {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 13px 8px; border-radius: 12px; cursor: pointer;
+  font-size: 14px; font-weight: 700; color: #999;
+  background: #F5F0E8; transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.kh-cc-radio.is-line:checked ~ .kh-cc-tabs .kh-cc-tab-line {
+  background: #06C755; color: #FFF; box-shadow: 0 3px 10px rgba(6,199,85,0.3);
+}
+.kh-cc-radio.is-form:checked ~ .kh-cc-tabs .kh-cc-tab-form {
+  background: #3C7FBF; color: #FFF; box-shadow: 0 3px 10px rgba(60,127,191,0.3);
+}
+.kh-cc-panel { display: none; padding: 22px 16px 16px; }
+.kh-cc-radio.is-line:checked ~ .kh-cc-panel-line { display: block; }
+.kh-cc-radio.is-form:checked ~ .kh-cc-panel-form { display: block; }
+.kh-cc-radio:focus-visible ~ .kh-cc-tabs .kh-cc-tab { outline: 2px solid #3C7FBF; outline-offset: 2px; }
+
+.kh-cc-line-lead { text-align: center; font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+.kh-cc-line-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #06C755; color: #FFF; font-size: 16px; font-weight: 700;
+  padding: 15px; border-radius: 12px; letter-spacing: 0.03em;
+  box-shadow: 0 3px 12px rgba(6,199,85,0.3); transition: opacity 0.2s, transform 0.2s;
+}
+.kh-cc-line-btn:hover { opacity: 0.9; color: #FFF; transform: translateY(-1px); }
+.kh-cc-line-note { text-align: center; font-size: 12px; color: #AAA; margin-top: 10px; }
+
+.kh-cc-form { display: flex; flex-direction: column; gap: 12px; }
+.kh-cc-field { display: flex; flex-direction: column; gap: 5px; }
+.kh-cc-field > span { font-size: 13px; font-weight: 700; color: #3A3A3A; }
+.kh-cc-field em {
+  font-style: normal; font-size: 10px; font-weight: 700; color: #E5734E;
+  background: #FDEDE7; padding: 1px 7px; border-radius: 4px; margin-left: 6px;
+}
+.kh-cc-field small { font-size: 10px; color: #AAA; font-weight: 500; margin-left: 6px; }
+.kh-cc-field input, .kh-cc-field textarea {
+  width: 100%; font-family: inherit; font-size: 15px; color: #3A3A3A;
+  padding: 11px 12px; border: 1.5px solid #E0D9CC; border-radius: 9px;
+  background: #FCFAF6; transition: border-color 0.2s, background 0.2s;
+}
+.kh-cc-field input:focus, .kh-cc-field textarea:focus {
+  outline: none; border-color: #3C7FBF; background: #FFF;
+}
+.kh-cc-field textarea { resize: vertical; line-height: 1.6; }
+.kh-cc-submit {
+  margin-top: 4px; padding: 14px; border: none; border-radius: 10px;
+  background: #3C7FBF; color: #FFF; font-size: 15px; font-weight: 700;
+  font-family: inherit; cursor: pointer; letter-spacing: 0.03em;
+  box-shadow: 0 3px 12px rgba(60,127,191,0.3); transition: opacity 0.2s, transform 0.2s;
+}
+.kh-cc-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+.kh-cc-form-note { font-size: 11px; color: #AAA; line-height: 1.7; text-align: center; margin-top: 4px; }
+
+@media (max-width: 640px) {
+  .kh-plans { grid-template-columns: 1fr; }
+  .kh-plan-body { padding: 22px 20px; }
+  .kh-cmp-label { font-size: 11px; padding-left: 8px; }
+  .kh-cmp-cell { font-size: 10px; padding: 8px 2px; }
+  .kh-cmp-head > div { font-size: 10px; }
+  .kh-cc-tab { font-size: 13px; padding: 12px 6px; }
+}
+
+/* ============================================================
+   ⑥ KEEPON WEAVE
+   ============================================================ */
+.kh-weave-list { display: flex; flex-direction: column; gap: 12px; }
+.kh-weave-item {
+  display: flex; align-items: center; gap: 16px; padding: 16px;
+  background: #FFFFFF; border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.kh-weave-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+.kh-weave-vol {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #F7941D, #FFB84D);
+  color: #FFF; border-radius: 8px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  flex-shrink: 0; font-weight: 700; font-size: 11px; line-height: 1.2;
+}
+.kh-weave-vol span { font-size: 18px; }
+.kh-weave-info { flex: 1; }
+.kh-weave-title { font-size: 14px; font-weight: 700; color: #3A3A3A; margin-bottom: 2px; }
+.kh-weave-date  { font-size: 12px; color: #999; }
+.kh-weave-note {
+  margin-top: 16px; text-align: center;
+  font-size: 13px; color: #999; line-height: 1.6;
+}
+
+/* ============================================================
+   ⑦ ABOUT
+   ============================================================ */
+.kh-about-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-top: 24px;
+}
+.kh-about-item {
+  text-align: center; padding: 24px 12px;
+  background: #FFFFFF; border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+.kh-about-num { font-size: 34px; font-weight: 900; color: #F7941D; line-height: 1.2; }
+.kh-about-unit { font-size: 14px; font-weight: 700; color: #F7941D; }
+.kh-about-label { font-size: 13px; color: #777; margin-top: 4px; }
+
+/* ============================================================
+   ⑧ CONTACT
+   ============================================================ */
+.kh-contact-box {
+  text-align: center; background: #FFFFFF; border-radius: 14px;
+  padding: 36px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.kh-contact-heading { font-size: 24px; font-weight: 900; color: #3A3A3A; margin-bottom: 8px; }
+.kh-line-btn {
+  display: inline-block; background: #06C755; color: #FFFFFF;
+  font-size: 16px; font-weight: 700; padding: 14px 40px;
+  border-radius: 10px; margin: 20px 0 8px;
+  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.03em;
+  box-shadow: 0 3px 12px rgba(6, 199, 85, 0.3);
+}
+.kh-line-btn:hover { opacity: 0.9; color: #fff; transform: translateY(-1px); }
+.kh-contact-or { font-size: 13px; color: #CCC; margin: 16px 0; }
+.kh-contact-tel { font-size: 22px; font-weight: 700; color: #3A3A3A; letter-spacing: 0.05em; }
+.kh-contact-tel a { color: #3A3A3A; }
+.kh-contact-mail { font-size: 14px; color: #3C7FBF; margin-top: 6px; }
+.kh-contact-mail a { color: #3C7FBF; }
+.kh-contact-note { font-size: 13px; color: #999; margin-top: 20px; line-height: 1.7; }
+
+/* ── Shared Button ────────────────────── */
+.kh-btn {
+  display: inline-block; padding: 12px 28px; border-radius: 8px;
+  font-size: 14px; font-weight: 600; text-align: center;
+  transition: opacity 0.2s, transform 0.2s; margin-top: 12px;
+}
+.kh-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.kh-btn-orange { background: #F7941D; color: #FFF; box-shadow: 0 3px 10px rgba(247,148,29,0.3); }
+.kh-btn-blue   { background: #3C7FBF; color: #FFF; box-shadow: 0 3px 10px rgba(60,127,191,0.3); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .kh-hero { padding: 44px 16px 36px; }
+  .kh-hero-catch, .kh-hero-catch-shimmer { font-size: 30px; }
+  .kh-hero-illustration { max-width: 300px; }
+  .kh-section { padding: 36px 16px; }
+  .kh-section-img { max-width: 280px; }
+  .kh-services { grid-template-columns: 1fr; gap: 12px; }
+  .kh-categories { grid-template-columns: 1fr; }
+  .kh-about-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .kh-about-num { font-size: 28px; }
+  .kh-about-label { font-size: 11px; }
+  .kh-hp-features { flex-direction: column; }
+  .kh-steam-heading { font-size: 22px; }
+  .kh-heading-lg { font-size: 20px; }
+  .kh-hp-card { padding: 24px 18px; }
+}
+</style>
+
+
+<div class="kh">
+
+<!-- ============================================================
+     ① HERO
+     ============================================================ -->
+<div class="kh-hero">
+  <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
+  <img src="images/hero.png" alt="" class="kh-hero-illustration">
+  <h1 class="kh-hero-catch kh-hero-catch-shimmer">園を、もっと自由に。</h1>
+  <p class="kh-hero-desc">
+    衣装も、STEAM体験も、ホームページも、ぜんぶ一社で。<br>
+    先生が<em>「やりたいこと」</em>に集中できる環境を、キープオンがつくります。
+  </p>
+</div>
+
+
+<!-- ============================================================
+     ② 3つのサービス
+     ============================================================ -->
+<div class="kh-section kh-bg-cream">
+  <div class="kh-inner">
+    <div class="kh-services">
+
+      <a href="#kh-steam" class="kh-service-card">
+        <div class="kh-service-icon">🎪</div>
+        <div class="kh-service-title">出前STEAM体験</div>
+        <div class="kh-service-desc">STEAM教室を10年運営しているプロ講師が園に出張。パズル・ロボット・工作の体験授業を行います。</div>
+        <span class="kh-service-cta kh-cta-orange">詳しく見る ↓</span>
+      </a>
+
+      <a href="#kh-products" class="kh-service-card">
+        <div class="kh-service-icon">🛒</div>
+        <div class="kh-service-title">園向けショップ</div>
+        <div class="kh-service-desc">発表会衣装、運動会などのイベントグッズ、おもちゃ・工作キットなど、圧倒的な品揃え。まとめ買い・名入れプリントもお任せください！</div>
+        <span class="kh-service-cta kh-cta-green">商品を見る ↓</span>
+      </a>
+
+      <a href="#kh-hp" class="kh-service-card">
+        <div class="kh-service-icon">🌐</div>
+        <div class="kh-service-title">HP制作サービス</div>
+        <div class="kh-service-desc">園のホームページを月額制で。「ホームページを作りたいけど、時間もない、何から始めれば…」そんな先生方の声に3つのプランで応えます！</div>
+        <span class="kh-service-cta kh-cta-blue">詳しく見る ↓</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ③ 商品カテゴリ
+     ============================================================ -->
+<div class="kh-section kh-bg-white" id="kh-products">
+  <div class="kh-inner">
+    <div class="kh-section-label">SHOP</div>
+    <h2 class="kh-heading-lg">よく使われる商品カテゴリ</h2>
+    <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
+    <img src="images/category.png" alt="" class="kh-section-img">
+
+    <div class="kh-categories">
+
+      <!-- ★LINK★ 各カテゴリのhrefを実際のカラーミーURLに差し替え -->
+
+      <a href="https://keepon-web.com/?mode=grp&gid=000001" class="kh-cat-card">
+        <div class="kh-cat-icon kh-cat-icon-1">👗</div>
+        <div class="kh-cat-info">
+          <div class="kh-cat-name">衣装・素材</div>
+          <div class="kh-cat-sub">サテンベスト、ハッピ、不織布 など</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+      <a href="https://keepon-web.com/?mode=grp&gid=000002" class="kh-cat-card">
+        <div class="kh-cat-icon kh-cat-icon-2">🎓</div>
+        <div class="kh-cat-info">
+          <div class="kh-cat-name">卒業・入学記念品</div>
+          <div class="kh-cat-sub">証書ファイル、フォトフレーム など</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+      <a href="https://keepon-web.com/?mode=grp&gid=000003" class="kh-cat-card">
+        <div class="kh-cat-icon kh-cat-icon-3">🎄</div>
+        <div class="kh-cat-info">
+          <div class="kh-cat-name">行事・シーズン</div>
+          <div class="kh-cat-sub">七夕、クリスマス、ハロウィン など</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+      <a href="https://keepon-web.com/?mode=grp&gid=000004" class="kh-cat-card">
+        <div class="kh-cat-icon kh-cat-icon-4">✂️</div>
+        <div class="kh-cat-info">
+          <div class="kh-cat-name">工作・ワークショップ</div>
+          <div class="kh-cat-sub">工作キット、ブロック、手作り教材 など</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+      <a href="https://keepon-web.com/?mode=grp&gid=000005" class="kh-cat-card">
+        <div class="kh-cat-icon kh-cat-icon-5">🧸</div>
+        <div class="kh-cat-info">
+          <div class="kh-cat-name">おもちゃ・カード</div>
+          <div class="kh-cat-sub">知育玩具、カードゲーム、パズル など</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+      <a href="https://keepon-web.com/?mode=grp&gid=000006" class="kh-cat-card">
+        <div class="kh-cat-icon kh-cat-icon-6">🏥</div>
+        <div class="kh-cat-info">
+          <div class="kh-cat-name">防災・介護</div>
+          <div class="kh-cat-sub">避難グッズ、安全用品 など</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+    </div>
+
+    <!-- ★LINK★ カタログのURLを実際のリンクに差し替え -->
+    <a href="https://keepon-web.com/catalog" class="kh-catalog-link">
+      📖 商品カタログをダウンロード
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ④ 出前STEAM体験（フル版）
+     ============================================================ -->
+<div class="kh-section kh-bg-warm" id="kh-steam">
+  <div class="kh-inner">
+    <div class="kh-steam-badge">NEW</div>
+    <h2 class="kh-steam-heading">あそびながら、かんがえる。</h2>
+    <p class="kh-heading-md" style="color:#999; font-weight:500; margin-bottom:12px;">出前STEAM体験のご案内</p>
+
+    <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
+    <img src="images/steam-illustration.png" alt="STEAM体験イメージ" class="kh-section-img">
+
+    <p class="kh-text" style="text-align:center;">
+      子どもたちが楽しみながら自然に"考える力"を育むプログラム。<br>
+      幼児期だからこそ大切にしたい「やってみたい」「どうして？」という<br>
+      気持ちを、遊びの中から学びにつなげます。
+    </p>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="docs/出前STEAM体験.pdf" target="_blank" rel="noopener" class="kh-dl-block">
+        <img src="images/出前STEAM体験.png" alt="出前STEAM体験 資料プレビュー" class="kh-dl-thumb">
+        <span class="kh-dl-label">
+          <span class="kh-dl-icon">⬇</span> 資料ダウンロード（PDF）
+        </span>
+      </a>
+    </div>
+
+
+    <!-- 問い合わせ（出前STEAM体験） -->
+    <div class="kh-sub-divider"></div>
+    <h3 class="kh-heading-lg">出前STEAM体験のお問い合わせ</h3>
+    <p class="kh-text" style="margin-bottom:8px;">
+      ご相談・お見積り・日程のご相談など、お気軽にどうぞ。<br>
+      <strong>LINE</strong> か <strong>お問い合わせフォーム</strong>、ご都合のよい方をお選びください。
+    </p>
+
+    <div class="kh-cc">
+      <input type="radio" id="ccS-line" name="ccS" class="kh-cc-radio is-line" checked>
+      <input type="radio" id="ccS-form" name="ccS" class="kh-cc-radio is-form">
+      <div class="kh-cc-tabs">
+        <label for="ccS-line" class="kh-cc-tab kh-cc-tab-line">💬 LINEで相談</label>
+        <label for="ccS-form" class="kh-cc-tab kh-cc-tab-form">✉️ フォームで送信</label>
+      </div>
+
+      <!-- LINE パネル -->
+      <div class="kh-cc-panel kh-cc-panel-line">
+        <p class="kh-cc-line-lead">友だち追加して、メッセージを送るだけ。<br>その場でやりとりできます。</p>
+        <a href="https://lin.ee/u8HJvZj" class="kh-cc-line-btn" target="_blank" rel="noopener">
+          💬 LINEで相談する
+        </a>
+        <p class="kh-cc-line-note">友だち追加後、メッセージをお送りください</p>
+      </div>
+
+      <!-- フォーム パネル -->
+      <div class="kh-cc-panel kh-cc-panel-form">
+        <!-- ★FORM★ action を実際の送信先（order@keepon-web.com 宛）に差し替えてください -->
+        <form class="kh-cc-form" action="https://formspree.io/f/＜https://formspree.io/f/xqevekyy＞" method="POST">
+          <input type="hidden" name="_subject" value="【出前STEAM体験】お問い合わせ">
+          <input type="hidden" name="お問い合わせ種別" value="出前STEAM体験">
+          <label class="kh-cc-field"><span>お名前<em>必須</em></span><input type="text" name="お名前" required></label>
+          <label class="kh-cc-field"><span>園名・施設名<small>任意</small></span><input type="text" name="園名・施設名"></label>
+          <label class="kh-cc-field"><span>メールアドレス<em>必須</em></span><input type="email" name="email" required></label>
+          <label class="kh-cc-field"><span>電話番号<small>任意</small></span><input type="tel" name="電話番号"></label>
+          <label class="kh-cc-field"><span>ご相談内容<em>必須</em></span><textarea name="ご相談内容" rows="4" required></textarea></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+          <button type="submit" class="kh-cc-submit">送信する</button>
+          <p class="kh-cc-form-note">送信内容は order@keepon-web.com 宛に届きます。<br>2営業日以内にご返信します。</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ⑤ ホームページ制作
+     ============================================================ -->
+<div class="kh-section kh-bg-white" id="kh-hp">
+  <div class="kh-inner">
+    <div class="kh-section-label">WEB</div>
+    <h2 class="kh-heading-lg">園のホームページ、まるごとおまかせ。</h2>
+
+    <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
+    <img src="images/hp-illustration.png" alt="ホームページ制作イメージ" class="kh-section-img">
+
+    <div class="kh-hp-card">
+      <p class="kh-text">
+        「ホームページを作りたいけど、時間もない、何から始めれば…」<br>
+        そんな園の先生の声から生まれたサービスです。<br>
+        制作から更新まで、すべてキープオンがサポートします。
+      </p>
+
+      <div class="kh-hp-features">
+        <div class="kh-hp-feature">
+          <div class="kh-hp-feature-icon">💰</div>
+          <div class="kh-hp-feature-text">相場の<br>約半額〜</div>
+        </div>
+        <div class="kh-hp-feature">
+          <div class="kh-hp-feature-icon">📱</div>
+          <div class="kh-hp-feature-text">スマホ対応</div>
+        </div>
+        <div class="kh-hp-feature">
+          <div class="kh-hp-feature-icon">🔄</div>
+          <div class="kh-hp-feature-text">更新おまかせ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 料金プラン -->
+    <div class="kh-sub-divider"></div>
+    <h3 class="kh-heading-lg">3つの料金プラン</h3>
+    <p class="kh-text" style="margin-bottom:8px;">
+      ご予算とこだわりに合わせて選べる3コース。<br>
+      <strong>一般的な制作会社の相場より大幅にお得</strong>な価格でご提供します。
+    </p>
+
+    <div class="kh-plans">
+
+      <!-- テンプレートコース -->
+      <div class="kh-plan">
+        <div class="kh-plan-body">
+          <div class="kh-plan-name">テンプレートコース</div>
+          <div class="kh-plan-tag">まずは手軽にはじめたい園へ</div>
+          <div class="kh-plan-market">相場 <s>50,000〜100,000円</s></div>
+          <div class="kh-plan-pricerow">
+            <span class="kh-plan-price">29,800</span><span class="kh-plan-yen">円〜</span>
+          </div>
+          <div class="kh-plan-pricelabel">ホームページ制作費</div>
+          <div class="kh-plan-divider"></div>
+          <div class="kh-plan-spec">月額保守<b>5,500円〜</b></div>
+          <div class="kh-plan-spec">制作期間<b>最短1週間</b></div>
+          <div class="kh-plan-spec">ページ数<b>5ページ程度</b></div>
+        </div>
+      </div>
+
+      <!-- セミオーダーコース（人気） -->
+      <div class="kh-plan kh-plan-pop">
+        <div class="kh-plan-ribbon">いちばん人気</div>
+        <div class="kh-plan-body">
+          <div class="kh-plan-name">セミオーダーコース</div>
+          <div class="kh-plan-tag">ちゃんと作りたい園に人気</div>
+          <div class="kh-plan-market">相場 <s>200,000〜300,000円</s></div>
+          <div class="kh-plan-pricerow">
+            <span class="kh-plan-price">98,000</span><span class="kh-plan-yen">円〜</span>
+          </div>
+          <div class="kh-plan-pricelabel">ホームページ制作費</div>
+          <div class="kh-plan-divider"></div>
+          <div class="kh-plan-spec">月額保守<b>9,800円</b></div>
+          <div class="kh-plan-spec">制作期間<b>2〜4週間</b></div>
+          <div class="kh-plan-spec">ページ数<b>7ページ程度</b></div>
+        </div>
+      </div>
+
+      <!-- フルオーダーコース -->
+      <div class="kh-plan">
+        <div class="kh-plan-body">
+          <div class="kh-plan-name">フルオーダーコース</div>
+          <div class="kh-plan-tag">園のブランドを丸ごとカタチに</div>
+          <div class="kh-plan-market">相場 <s>450,000〜600,000円</s></div>
+          <div class="kh-plan-pricerow">
+            <span class="kh-plan-price">298,000</span><span class="kh-plan-yen">円〜</span>
+          </div>
+          <div class="kh-plan-pricelabel">ホームページ制作費</div>
+          <div class="kh-plan-divider"></div>
+          <div class="kh-plan-spec">月額保守<b>14,800円</b></div>
+          <div class="kh-plan-spec">制作期間<b>4〜8週間</b></div>
+          <div class="kh-plan-spec">ページ数<b>10ページ〜</b></div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="kh-plan-note">
+      ※ 金額はすべて税別です。<br>
+      ※ ドメイン取得・SSL証明書は別途／最低契約期間なし・いつでも解約可能
+    </p>
+
+    <!-- 機能比較 -->
+    <div class="kh-sub-divider"></div>
+    <h3 class="kh-heading-lg">機能の比較</h3>
+
+    <div class="kh-cmp">
+      <div class="kh-cmp-row kh-cmp-head">
+        <div></div>
+        <div>テンプレート</div>
+        <div class="kh-cmp-pop">セミオーダー</div>
+        <div>フルオーダー</div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">ページ数</div>
+        <div class="kh-cmp-cell">5ページ程度</div>
+        <div class="kh-cmp-cell">7ページ程度</div>
+        <div class="kh-cmp-cell">10ページ〜</div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">デザイン</div>
+        <div class="kh-cmp-cell">テンプレから選択</div>
+        <div class="kh-cmp-cell">テンプレ＋カスタマイズ</div>
+        <div class="kh-cmp-cell">完全オリジナル</div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">スマホ対応</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">写真・テキスト差替え</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">お問い合わせフォーム</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">Zoom打ち合わせ</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-no">—</span></div>
+        <div class="kh-cmp-cell">1回（30分）</div>
+        <div class="kh-cmp-cell">複数回</div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">ラフ案の作成</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-no">—</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">オリジナルデザイン</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-no">—</span></div>
+        <div class="kh-cmp-cell">一部対応</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-yes">✓</span></div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">ロゴ制作（別途）</div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-no">—</span></div>
+        <div class="kh-cmp-cell"><span class="kh-cmp-no">—</span></div>
+        <div class="kh-cmp-cell">◎</div>
+      </div>
+      <div class="kh-cmp-row">
+        <div class="kh-cmp-cell kh-cmp-label">更新サポート</div>
+        <div class="kh-cmp-cell">メール／LINE</div>
+        <div class="kh-cmp-cell">＋オンライン</div>
+        <div class="kh-cmp-cell">＋オンライン</div>
+      </div>
+    </div>
+
+    <!-- 制作の流れ -->
+    <div class="kh-sub-divider"></div>
+    <h3 class="kh-heading-lg">制作の流れ</h3>
+
+    <div class="kh-flow">
+      <div class="kh-flow-title">ラフ案のご提示まで、完全無料。</div>
+      <div class="kh-flow-sub">納得いただいてから契約・お支払い。安心してご相談ください。</div>
+
+      <div class="kh-flow-step kh-flow-free">
+        <div class="kh-flow-num">1</div>
+        <span class="kh-flow-label">顔合わせで方向性を選定</span>
+        <span class="kh-flow-badge">無料</span>
+      </div>
+      <div class="kh-flow-line"></div>
+      <div class="kh-flow-step kh-flow-free">
+        <div class="kh-flow-num">2</div>
+        <span class="kh-flow-label">Zoom 30分で意見交換</span>
+        <span class="kh-flow-badge">無料</span>
+      </div>
+      <div class="kh-flow-line"></div>
+      <div class="kh-flow-step kh-flow-free">
+        <div class="kh-flow-num">3</div>
+        <span class="kh-flow-label">ラフ案・方向性をご提示</span>
+        <span class="kh-flow-badge">無料</span>
+      </div>
+
+      <div style="margin:14px 0 14px 0;">
+        <span class="kh-flow-pay">▼ ここからご契約・お支払い</span>
+      </div>
+
+      <div class="kh-flow-step kh-flow-paid">
+        <div class="kh-flow-num">4</div>
+        <span class="kh-flow-label">本デザイン制作</span>
+      </div>
+      <div class="kh-flow-line"></div>
+      <div class="kh-flow-step kh-flow-paid">
+        <div class="kh-flow-num">5</div>
+        <span class="kh-flow-label">校正確認・修正</span>
+      </div>
+      <div class="kh-flow-line"></div>
+      <div class="kh-flow-step kh-flow-paid">
+        <div class="kh-flow-num">6</div>
+        <span class="kh-flow-label">納品・公開</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <!-- ★LINK★ HP制作サービス -->
+      <a href="https://keepon-web.com/?tid=4&amp;mode=f37" class="kh-btn kh-btn-blue" target="_blank" rel="noopener">
+        HP制作サービスの詳細を見る →
+      </a>
+    </div>
+
+    <!-- 問い合わせ（HP制作サービス） -->
+    <div class="kh-sub-divider"></div>
+    <h3 class="kh-heading-lg">HP制作サービスのお問い合わせ</h3>
+    <p class="kh-text" style="margin-bottom:8px;">
+      「どのコースが合う？」「まずは話を聞きたい」だけでも大歓迎です。<br>
+      <strong>LINE</strong> か <strong>お問い合わせフォーム</strong>、ご都合のよい方をお選びください。
+    </p>
+
+    <div class="kh-cc">
+      <input type="radio" id="ccH-line" name="ccH" class="kh-cc-radio is-line" checked>
+      <input type="radio" id="ccH-form" name="ccH" class="kh-cc-radio is-form">
+      <div class="kh-cc-tabs">
+        <label for="ccH-line" class="kh-cc-tab kh-cc-tab-line">💬 LINEで相談</label>
+        <label for="ccH-form" class="kh-cc-tab kh-cc-tab-form">✉️ フォームで送信</label>
+      </div>
+
+      <!-- LINE パネル -->
+      <div class="kh-cc-panel kh-cc-panel-line">
+        <p class="kh-cc-line-lead">友だち追加して、メッセージを送るだけ。<br>その場でやりとりできます。</p>
+        <a href="https://lin.ee/u8HJvZj" class="kh-cc-line-btn" target="_blank" rel="noopener">
+          💬 LINEで相談する
+        </a>
+        <p class="kh-cc-line-note">友だち追加後、メッセージをお送りください</p>
+      </div>
+
+      <!-- フォーム パネル -->
+      <div class="kh-cc-panel kh-cc-panel-form">
+        <!-- ★FORM★ action を実際の送信先（order@keepon-web.com 宛）に差し替えてください -->
+        <form class="kh-cc-form" action="https://formspree.io/f/＜https://formspree.io/f/xqevekyy＞" method="POST">
+          <input type="hidden" name="_subject" value="【HP制作サービス】お問い合わせ">
+          <input type="hidden" name="お問い合わせ種別" value="HP制作サービス">
+          <label class="kh-cc-field"><span>お名前<em>必須</em></span><input type="text" name="お名前" required></label>
+          <label class="kh-cc-field"><span>園名・施設名<small>任意</small></span><input type="text" name="園名・施設名"></label>
+          <label class="kh-cc-field"><span>メールアドレス<em>必須</em></span><input type="email" name="email" required></label>
+          <label class="kh-cc-field"><span>電話番号<small>任意</small></span><input type="tel" name="電話番号"></label>
+          <label class="kh-cc-field"><span>ご希望コース<small>任意</small></span><input type="text" name="ご希望コース" placeholder="テンプレート / セミオーダー / フルオーダー / 未定"></label>
+          <label class="kh-cc-field"><span>ご相談内容<em>必須</em></span><textarea name="ご相談内容" rows="4" required></textarea></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+          <button type="submit" class="kh-cc-submit">送信する</button>
+          <p class="kh-cc-form-note">送信内容は order@keepon-web.com 宛に届きます。<br>2営業日以内にご返信します。</p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ⑥ Keepon Weave アーカイブ
+     ============================================================ -->
+<div class="kh-section kh-bg-warm">
+  <div class="kh-inner">
+    <div class="kh-section-label">KEEPON WEAVE</div>
+    <h2 class="kh-heading-lg">園のお役立ち情報</h2>
+
+    <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
+    <img src="images/weave-illustration.png" alt="お役立ち情報イメージ" class="kh-section-img">
+
+    <p class="kh-text" style="margin-bottom:24px;">
+      幼稚園・保育園などの教育施設向けに、お役立ち情報を月1回お届けしています。
+    </p>
+
+    <div class="kh-weave-list">
+
+      <a href="https://keepon.my.canva.site/keepon-weave-1" target="_blank" rel="noopener" class="kh-weave-item">
+        <div class="kh-weave-vol">
+          vol.<br><span>1</span>
+        </div>
+        <div class="kh-weave-info">
+          <div class="kh-weave-title">Keepon Weave いよいよ始動！</div>
+          <div class="kh-weave-date">2025年3月8日</div>
+        </div>
+        <div class="kh-cat-arrow">›</div>
+      </a>
+
+      <!-- ★ 新しい号を追加する場合、上記ブロックをコピーして内容を書き換えてください ★ -->
+
+    </div>
+
+    <p class="kh-weave-note">
+      バックナンバーは随時追加されます。<br>
+      配信のご登録は <a href="https://lin.ee/u8HJvZj" style="color:#06C755; font-weight:600;">LINE</a> からどうぞ。
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ⑦ キープオンについて
+     ============================================================ -->
+<div class="kh-section kh-bg-white">
+  <div class="kh-inner">
+    <div class="kh-section-label">ABOUT</div>
+    <h2 class="kh-heading-lg">なぜキープオンが選ばれるのか</h2>
+
+    <!-- ★IMG★ カラーミーにアップ後、srcを差し替え -->
+    <img src="images/about-illustration.png" alt="キープオンについて" class="kh-section-img">
+
+    <p class="kh-text">
+      キープオン株式会社は、大阪府八尾市に拠点を置く教育会社です。<br>
+      ロボット・プログラミングのスクール運営を軸に、教育用品のネットショップ、ホームページ制作と、園の運営を多面的にサポートしています。
+    </p>
+    <p class="kh-text" style="margin-top:12px;">
+      小さな会社だからこそ、一人ひとりのお客様に向き合い、ご要望にすぐお応えできる。<br>
+      それがキープオンの一番の強みです。
+    </p>
+
+    <div class="kh-about-grid">
+      <div class="kh-about-item">
+        <div class="kh-about-num">13<span class="kh-about-unit">年</span></div>
+        <div class="kh-about-label">ショップ運営</div>
+      </div>
+      <div class="kh-about-item">
+        <div class="kh-about-num">10<span class="kh-about-unit">年</span></div>
+        <div class="kh-about-label">STEAM教室の運営</div>
+      </div>
+      <div class="kh-about-item">
+        <div class="kh-about-num">90<span class="kh-about-unit">名</span></div>
+        <div class="kh-about-label">がスクールに在籍中</div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:28px;">
+      <a href="https://keepon-web.com" class="kh-btn kh-btn-orange" target="_blank" rel="noopener">
+        キープオンショップはこちら →
+      </a>
+      <a href="https://www.keeponlearning.fun" class="kh-btn kh-btn-blue" target="_blank" rel="noopener">
+        キープオンスクールはこちら →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ⑧ お問い合わせ
+     ============================================================ -->
+<div class="kh-section kh-bg-cream" id="kh-contact">
+  <div class="kh-inner">
+    <div class="kh-contact-box">
+      <h2 class="kh-contact-heading">まずは、お気軽に。</h2>
+      <p class="kh-text">商品のこと、ワークショップのこと、<br>どんな小さなご相談も大歓迎です。</p>
+
+      <a href="https://lin.ee/u8HJvZj" class="kh-line-btn" target="_blank" rel="noopener">
+        💬 LINEで相談する
+      </a>
+      <p class="kh-text-sm">友だち追加後、メッセージをお送りください</p>
+
+      <div class="kh-contact-or">── または ──</div>
+
+      <div class="kh-contact-tel">
+        <a href="tel:0729286552">📞 072-928-6552</a>
+      </div>
+      <div class="kh-contact-mail">
+        <a href="mailto:clat2@keepon-web.com">✉ clat2@keepon-web.com</a>
+      </div>
+
+      <p class="kh-contact-note">
+        営業時間：平日 10:00〜17:00<br>
+        ※メール・LINEは24時間受付
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div style="text-align:center; padding:24px 16px; background:#FFF8F0;">
+  <p style="font-size:12px; color:#CCC; font-family:'Zen Maru Gothic',sans-serif;">© キープオン株式会社</p>
+</div>
+
+</div>

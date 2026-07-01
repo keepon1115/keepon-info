@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>お問い合わせ｜キープオン HP制作</title>
+<meta name="description" content="LINEまたはフォームでお気軽にお問い合わせください。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="contact" data-title="お問い合わせ" data-eyebrow="CONTACT">
+<main>
+  <section class="section">
+    <div class="container">
+      <p class="lead-block reveal">お気軽にお問い合わせください。<br>「まだ何も決まっていない」段階でも大歓迎です。</p>
+
+      <div class="contact-grid">
+        <!-- LINE -->
+        <div class="contact-card reveal">
+          <h2>LINEで相談する</h2>
+          <p class="contact-card__sub">友だち追加して、メッセージを送るだけ。</p>
+          <figure class="img-ph qr-box" style="aspect-ratio:1">
+            <!-- 画像差し替え: assets/images/contact/line-qr.png -->
+            <span class="img-ph__ico">📱</span><span class="img-ph__label">LINE公式 QRコード</span>
+            <span class="img-ph__size">推奨 600×600px</span><span class="img-ph__path">assets/images/contact/line-qr.png</span>
+          </figure>
+          <a href="#" data-line-btn class="btn btn--line btn--block btn--lg"><span class="ico-line"></span>友だち追加する</a>
+        </div>
+
+        <!-- フォーム -->
+        <div class="contact-card reveal">
+          <h2>フォームで送る</h2>
+          <p class="contact-card__sub">必須は3項目だけ。スキマ時間にどうぞ。</p>
+          <form class="cform contact-page-form" id="contactPageForm" novalidate>
+            <label class="cform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" required autocomplete="name" /></label>
+            <label class="cform__field"><span>施設名 <small>任意</small></span><input type="text" name="org" autocomplete="organization" /></label>
+            <label class="cform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" required autocomplete="email" /></label>
+            <label class="cform__field"><span>電話番号 <small>任意</small></span><input type="tel" name="tel" autocomplete="tel" /></label>
+            <fieldset class="cform__field"><legend>興味のあるコース</legend>
+              <label class="cform__check"><input type="checkbox" name="course" value="template" /> テンプレートコース</label>
+              <label class="cform__check"><input type="checkbox" name="course" value="custom" /> オーダーメイドコース</label>
+              <label class="cform__check"><input type="checkbox" name="course" value="undecided" /> まだ決めていない</label>
+            </fieldset>
+            <label class="cform__field"><span>ご相談内容 <em>必須</em></span><textarea name="message" rows="4" required></textarea></label>
+            <button type="submit" class="btn btn--primary btn--block btn--lg">送信する</button>
+          </form>
+          <div class="cform__done" hidden>
+            <span class="cform__done-ico">🎉</span>
+            <h3>送信ありがとうございます！</h3>
+            <p>2営業日以内にお返事します。<br>しつこい営業は一切しませんのでご安心ください。</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="contact-note reveal">「しつこい営業は一切しません。」　2営業日以内にお返事します。</p>
+    </div>
+  </section>
+</main>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/diagnosis.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
